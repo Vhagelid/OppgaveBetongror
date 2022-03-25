@@ -1,8 +1,8 @@
 var formEl = document.getElementById("form");
 var inputValues = {
-    indreD: document.getElementById("indreD").value,
-    ytreD: document.getElementById("ytreD").value,
-    lengde: document.getElementById("rørL").value,
+    indreD: parseFloat(document.getElementById("indreD").value),
+    ytreD: parseFloat(document.getElementById("ytreD").value),
+    lengde: parseFloat(document.getElementById("rørL").value),
     pi: Math.pi,
     betong: 12500,
     result: document.getElementById("result")
@@ -16,17 +16,16 @@ formEl.addEventListener("submit", function(e) {
 
     Volum()
 
-    console.log(ytreVolum)
-
+    console.log(indreR)
 });
 
 
-function Volum(indreD, ytreD) {
-    var indreR = indreD / 2;
+function Volum(inputValues) {
+    var indreR = inputValues.indreD / 2;
     var ytreR = ytreD / 2;
 
     indreVolum = computation(indreR, inputValues.lengde);
-    ytreVolum = computation(ytreR, inputValues.lengde.value);
+    ytreVolum = computation(ytreR, inputValues.lengde);
     volum = indreVolum - ytreVolum;
 
     var mengde = Math.ceil(volum/inputValues.betong)
